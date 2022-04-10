@@ -16,7 +16,7 @@ const NewsDetails = () => {
          <h2>{newsData.title}</h2>
         <img src= {newsData.urlToImage ? newsData.urlToImage : Cnn} alt = 'newsDetails'/>
         <p>{newsData.description}</p>
-        <Link to = 'newsApp/'><button>Go back</button></Link> 
+        <Link to = 'newsApp/'><button>Go back..</button></Link> 
         </DetailsStyle>
           
         
