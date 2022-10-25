@@ -32,7 +32,7 @@ const Home = () => {
             </NewStyle> 
             </NewsList> 
         <div className="footer">
-  
+          <Footer/>
         </div>
                 </div> 
     )
