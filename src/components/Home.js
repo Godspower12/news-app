@@ -23,14 +23,16 @@ const Home = () => {
           <div>   
         <NewsList>
        <h1>Trending News</h1> 
-            <NewStyle>
-              {news.map(newz => (
+           <NewStyle>
+              { news.length == 0 ? <Empty className='loading'>
+            <h1>Loading...</h1>
+            </Empty> : news.map(newz => (
                 <News title = {newz.title} description = {newz.description} id = {newz.id} key = {newz.id} 
                 image = {newz.image_url} />) )}
-            </NewStyle>
-            </NewsList>
+            </NewStyle> 
+            </NewsList> 
         <div className="footer">
-          <Footer/>
+  
         </div>
                 </div> 
     )
@@ -56,6 +58,31 @@ grid-column-gap: 3rem;
 grid-row-gap: 5rem;
 align-items: center;
 margin-left: 10%;
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh
+
+  
+`;
+
+const Empty = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh
+  width: 100%;
+
+  @media(max-width: 425px) {
+    display: flex;
+    width: 50%;
+  justify-content: center;
+  align-items: left;
+  height: 100vh
+   
+
+}
 `;
 export default Home;
 
