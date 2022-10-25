@@ -1,27 +1,30 @@
 import {useState} from 'react';
 import Cnn from "../images/cnn.jpg";
 import styled from 'styled-components';
+import uuid from "react-uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faUnLiked } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faLiked } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from 'react-router-dom';
-// import {useDispatch, useSelector} from 'react-redux';
-// import { loadNews } from '../actions/newsAction';
-const News = ({title, image, id}) => {
-  const [isLiked, updateLike] = useState(true);
-  const [likes, setLikes] = useState(Math.floor(Math.random() * 100));
-    
 
-     
-   
+const News = ({title, image, id}) => {
+  
+
+    const [isLiked, updateLike] = useState(true);
+    const [likes, setLikes] = useState(Math.floor(Math.random() * 100));
+
+
   return (
     
             <NewsStyle>
           <NavLink to= {`/${id}`}>
-                <h3>{title}</h3>
-                </NavLink> 
+               <div className="text-contents">
+               <h3>{title}</h3>
+               </div>
+               </NavLink> 
                <LikeStyle>
-                <img src={image ? image : Cnn} alt="img" />
+                <img src={image || Cnn} alt="img" />
+                
                <ul>
                <li>
 
@@ -43,9 +46,10 @@ const News = ({title, image, id}) => {
                     </li>
                     <li>{likes}</li>
                 </ul>
+                
                 </LikeStyle>
                    
-                   
+                
 
             </NewsStyle>
                
@@ -58,29 +62,24 @@ const News = ({title, image, id}) => {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: space-between; 
     align-items: center;
-         max-width: 90%;
-         padding: 5%;
-         border-radius: 10%;
-         cursor: pointer;
-         :hover {
+    max-width: 70%;
+    padding: 5%;
+    border-radius: 10%;
+    transition: 0.6s ease;
+           :hover {
             transform: scale(1.1);
            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
             }
     
          h3 {
-            
-             display: flex;
-             justify-content: center; 
-               align-items: center;
-            
+            width: 150%;
+            cursor: pointer;
          }   
 
-         /* h3  {
-             position: absolute;
-             margin-top: 33%; */ */
+        
             
          }
          a{ 
@@ -89,46 +88,40 @@ const News = ({title, image, id}) => {
          }   
         
         p{
-        
-            text-align: left;
             margin-left: 30px;
         }
 
         img {
-            max-width: 50%
+            max-width: 30%
         }
-  
-            /* mini-ipad screen */
-        @media(max-width: 600px) {
-        margin-left: -10%;
-        }
-        @media(max-width: 844px) {
-        min-width: 100%;
-       
-       
-        img {
-            width: 50%;
-
-        }
-        
-        }
+    
 
         /* mobile screen */
-        @media(max-width: 390px) {
-            /* background: red; */
-            margin-left: -40%;
-            width: 50%;
+
+        @media(max-width: 425px) {
+            width: 100%;
+            margin-left: -40px;
+
            h3 {
               font-size: 10px;
-              margin-right: 15%;
            } 
-           
-        }
+           img {
+            max-width: 50%;
+            margin-left: 60px;
+        
+    }
+        @media(max-width: 375px) {
+            // width: 20%;
+            margin-left: -50px;
 
-        @media(max-width: 414px) {
-        margin-left: -30%;
-    
-        }
+           h3 {
+              font-size: 10px;
+           } 
+           img {
+            max-width: 50%;
+            margin-left: 60px;
+        
+    }
     `;
 
 
@@ -145,29 +138,13 @@ ul{
     list-style: none;
     text-align: center;
 }
-li {
-                margin-left: 10px;
-
-            }
-
-            img {
-            width: 80%;
-            height: 50%;
-            /* max-width: 50%; */
-           
-            margin-left: 10%;
-            border: 1px solid white;
-            border-radius: 10%;
-            box-shadow: rgba(0,0,0, 0.3);
+li{
+    
+    margin-left: 5px;
+    
+}
        
-       
-        }
-  
-        @media(max-width: 390px) {
-           
-            width: 90%;
-            margin-right: 15%;
-        }
+
 `;
 
 export default News;

@@ -9,7 +9,7 @@ export const loadNews = () => async (dispatch) => {
    dispatch({
        type: "FETCH_NEWS",
        payload: {
-        news: newsData.data.articles
+        news: newsData.data.results
 
        }  
          

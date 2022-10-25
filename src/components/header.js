@@ -13,29 +13,29 @@ function Header() {
 
 
 const HeaderImg = styled.div`
-background: purple;
+background: black;
+width: 100vw;
+top: 0;
+margin-left: -10px;
 img {
-    width: 100%;
     height: 20vh;
     max-width: 20%;
     overflow: hidden;
     
-    /* Ipad screen */
-    @media(max-width: 820px) {
-        
-        height: 10vh;
-            max-width: 30%;
-        }
+    
     
         /* mobile screen */
-        @media(max-width: 390px) {
-        height: 10vh;
-            max-width: 30%;
-        }
-        @media(max-width: 414px) {
+
+        @media(max-width: 425px) {
+            height: 7vh;
+            width: 100%;
+            }
+        @media(max-width: 375px) {
         height: 7vh;
-            max-width: 30%;
+        width: 100%;
+       
         }
+       
 }
 `; 
 

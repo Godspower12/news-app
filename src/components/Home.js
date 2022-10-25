@@ -1,25 +1,24 @@
-import  {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { loadNews } from '../actions/newsAction';
 
+import  {useEffect} from 'react';
+import { loadNews } from '../actions/newsAction';
+import {useDispatch, useSelector} from 'react-redux';
 // Components 
 import News from './News';
 
 //styles
 import styled from 'styled-components';
+import Footer from './Footer';
 
 const Home = () => {
-    const dispatch = useDispatch();
+  const {news} = useSelector(state => state.news);
+  console.log(news)
+
+  const dispatch = useDispatch();
+  useEffect(()=> {
+      dispatch(loadNews())
+   }, []);
  
-    useEffect( ()=> {
-        dispatch(loadNews());
-    }, []);
 
-    const {news} = useSelector((state) => state.news);
-
-    const state = useSelector((state) => state);
-    // console.log(state);
-    console.log(news);
     return(
           <div>   
         <NewsList>
@@ -27,16 +26,19 @@ const Home = () => {
             <NewStyle>
               {news.map(newz => (
                 <News title = {newz.title} description = {newz.description} id = {newz.id} key = {newz.id} 
-                image = {newz.urlToImage} likes = {state.news.likes}/>) )}
+                image = {newz.image_url} />) )}
             </NewStyle>
             </NewsList>
-        
+        <div className="footer">
+          <Footer/>
+        </div>
                 </div> 
     )
 };
 
 const NewsList = styled.div`
 padding: 0rem 5rem;
+margin-bottom: 30px;
 h2 {
   padding : 5rem 0rem;
 }
