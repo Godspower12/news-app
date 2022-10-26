@@ -4,7 +4,7 @@ import { loadNews } from '../actions/newsAction';
 import {useDispatch, useSelector} from 'react-redux';
 // Components 
 import News from './News';
-
+import "./loaderStyles.css"
 //styles
 import styled from 'styled-components';
 import Footer from './Footer';
@@ -24,9 +24,13 @@ const Home = () => {
         <NewsList>
        <h1>Trending News</h1> 
            <NewStyle>
-              { news.length == 0 ? <Empty className='loading'>
-            <h1>Loading...</h1>
-            </Empty> : news.map(newz => (
+              { news.length == 0 ?
+              <div className="loading-container">
+                <div className="loading">Loading&#8230;
+
+              </div>
+
+            </div> : news.map(newz => (
                 <News title = {newz.title} description = {newz.description} id = {newz.id} key = {newz.id} 
                 image = {newz.image_url} />) )}
             </NewStyle> 
@@ -63,25 +67,6 @@ h1 {
   justify-content: center;
   align-items: center;
   height: 100vh
-
-  
-`;
-
-const Empty = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh
-  width: 100%;
-
-  @media(max-width: 425px) {
-    display: flex;
-    width: 50%;
-  justify-content: center;
-  align-items: left;
-  height: 100vh
-   
-
 }
 `;
 export default Home;
